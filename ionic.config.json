@@ -1,0 +1,7 @@
+{
+  "name": "qc-hybrid-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
