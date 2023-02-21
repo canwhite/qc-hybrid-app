@@ -19,7 +19,6 @@ const props = defineProps(["url"]);
 const subject$ = ref(new Subject());
 const subs = ref([]);
 const htmlref = ref();
-// const imageSrc = ref('');
 
 //如果离开当前页面，销毁订单
 onUnmounted(()=>{
@@ -88,9 +87,7 @@ const haveLoad = ()=>{
     if(window){
         window.addEventListener('message', function (messageEvent) {
             if (event.origin === 'http://42.194.146.195:8888'){
-                //todo
                 var data = messageEvent.data;
-                // console.log("---data---",data);
                 subject$.value.next(data);
             }else{
                 //todo

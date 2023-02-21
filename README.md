@@ -1,6 +1,8 @@
 ## qc-hybrid-app
-用ionic知识提供了一个壳儿，
-然后原生交互可以基于capacitor
+用ionic提供了一个壳儿，   
+然后h5原生通信部分交给capacitor、jsbridge。   
+webview是用ionic的ion-content和iframe搭配实现，   
+通过iframe的交互和单个模块沟通。
 
 
 # init
@@ -62,6 +64,12 @@ ionic cap sync
 [custom plugin](https://github.com/canwhite/qc-capacitor-plugin)
 
 
+# bridge
+[jsbridge](https://juejin.cn/post/6844903885555892232)    
+[jsbridge-example](https://github.com/canwhite/jsbridge-example)
+
+
+
 # electron
 
 ```
@@ -82,16 +90,20 @@ npm run electron:start
 
 # ps
 webview
-是content和iframe搭配,自己封装一个
+是content和iframe搭配,自己封装一个   
+ionic默认的webview也是如此
 
 ```
- <ion-content>
-    <iframe 
-        style="width:100%;height:100%;border:none;overflow: hidden" 
-        scrolling="no" 
-        allowfullscreen 
-        src="http://42.194.146.195:8888/test"></iframe>
+<template>  
+    <ion-content :fullscreen="true">
+        <iframe 
+            ref="htmlref"
+            scrolling="no" 
+            allowfullscreen 
+            :src="props.url"
+            @load = "haveLoad">
+        </iframe>
     </ion-content>
-</ion-content>
+</template>
 
 ```
