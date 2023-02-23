@@ -28,7 +28,7 @@ onUnmounted(()=>{
 })
 
 
-//写一个监听
+//trigger
 const sub =  subject$.value.subscribe((res)=>{
     // console.log("res",res);
     //camera triggger 
@@ -58,7 +58,7 @@ const sub =  subject$.value.subscribe((res)=>{
 
 subs.value.push(sub);
 
-
+//action handle
 const takePicture = async () => {
   const image = await Camera.getPhoto({
     quality: 90,
@@ -66,7 +66,7 @@ const takePicture = async () => {
     resultType: CameraResultType.Uri
   });
   const imageUrl = image.webPath;
-  //cb传递
+  //callback
   subject$.value.next({
     type:"cameraCb",
     value:imageUrl
