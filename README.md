@@ -45,18 +45,23 @@ ionic integrations enable capacitor
 ionic build
 ionic cap add ios
 ionic cap add android
+
+// build or add package 之后执行update即  ionic cap sync
 ```
 
 3.We use the standard native IDEs (Xcode and Android Studio) to open, build, and run the iOS and Android projects:
 ```
-ionic cap open ios
+cd ios/app  // eg: ios app 文件地址 安装pod podfile类似package.json
+pod install // ios 装包
+ionic cap open ios  //启动ios程序
+
 ionic cap open android
 ```
 
 # update
 
 ```
-ionic cap sync
+ionic cap sync //将build 之后的包同步
 ```
   
 # custom plugin
