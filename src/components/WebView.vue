@@ -1,10 +1,10 @@
 <template>  
     <!-- ionic用ion-content和iframe作为webview组合       -->
-    <ion-content :fullscreen="true">
+    <ion-content  :fullscreen="true">
         <iframe 
             ref="htmlref"
             scrolling="no" 
-            allowfullscreen 
+            allowfullscreen
             :src="props.url"
             @load = "haveLoad">
         </iframe>
@@ -104,7 +104,7 @@ iframe {
     width:100%;
     height:100%;
     border:none;
-    overflow: hidden
+    overflow: hidden;
 }
 </style>
 
