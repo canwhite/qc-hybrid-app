@@ -4,8 +4,8 @@
       <ion-toolbar>
         <ion-title>首页</ion-title>
       </ion-toolbar>
-      <web-view :url="url"/>
     </ion-header>
+    <web-view :url="url"/>
   </ion-page>
 </template>
 
