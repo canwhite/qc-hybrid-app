@@ -2,7 +2,7 @@
  * @Author: liyafei liyafei@csii.com.cn
  * @Date: 2023-02-24 15:25:05
  * @LastEditors: liyafei liyafei@csii.com.cn
- * @LastEditTime: 2023-02-24 16:03:36
+ * @LastEditTime: 2023-02-24 16:49:15
  * @FilePath: /qc-hybrid-app/src/components/Example.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -14,7 +14,7 @@
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="home" href="/home">
           <ion-icon :icon="playCircle" />
-          <ion-label>Listen now</ion-label>
+          <ion-label>首页</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="radio" href="/radio">
@@ -29,7 +29,7 @@
 
         <ion-tab-button tab="search" href="/search">
           <ion-icon :icon="search" />
-          <ion-label>Search</ion-label>
+          <ion-label>我的</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
