@@ -1,3 +1,11 @@
+/*
+ * @Author: liyafei liyafei@csii.com.cn
+ * @Date: 2023-02-23 18:42:45
+ * @LastEditors: liyafei liyafei@csii.com.cn
+ * @LastEditTime: 2023-02-24 15:31:04
+ * @FilePath: /qc-hybrid-app/src/main.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
@@ -27,6 +35,7 @@ import WebView from  "@/components/WebView.vue";
 
 
 const app = createApp(App).use(IonicVue).use(router);
+
 app.component("web-view",WebView);//全局注册一下,直接使用吧
   
 router.isReady().then(() => {

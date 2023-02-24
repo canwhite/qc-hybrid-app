@@ -51,14 +51,16 @@ ionic cap add android
 
 3.We use the standard native IDEs (Xcode and Android Studio) to open, build, and run the iOS and Android projects:
 ```
-cd ios/app  // eg: ios app 文件地址 安装pod podfile类似package.json
-pod install // ios 装包
+cd ios/app  // eg: ios/app 文件地址, 先安装pod podfile类似package.json
+pod install // ios 装依赖包， 已有可忽略
 ionic cap open ios  //启动ios程序
 
 ionic cap open android
 ```
 
 # update
+
+
 
 ```
 ionic cap sync //将build 之后的包同步
