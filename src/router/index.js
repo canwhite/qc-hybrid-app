@@ -54,6 +54,12 @@ const routes = [
       },
     ],
   },
+  {
+    path:"/webview",
+    component:()=>import("../views/wvtest/index.vue")
+  }
+
+
 ];
 
 const router = createRouter({

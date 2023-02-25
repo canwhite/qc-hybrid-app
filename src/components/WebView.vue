@@ -14,33 +14,41 @@
 import {onMounted,onUnmounted,ref} from "vue";
 import { Camera, CameraResultType } from '@capacitor/camera';
 import { IonContent} from '@ionic/vue';
-import {Subject} from "rxjs";
+// import {Subject} from "rxjs";
+import {useRouter} from "vue-router";
+import {ionicMessageHandle} from "../plugins/wvm.js";
+import {parseJsonStringToObject} from "../plugins/utils.js"
 const props = defineProps(["url"]);
-const subject$ = ref(new Subject());
+const subject$ = ref();
 const subs = ref([]);
 const htmlref = ref();
+const router = useRouter();
+const useMessage = ionicMessageHandle(htmlref.value,router);
+const {appBack,onMessage,removeMessage,initPlatformWithParams,value$} = useMessage();
 
-//如果离开当前页面，销毁订单
-onUnmounted(()=>{
-    subs.value.forEach((item)=>{
-        item?.unsubscribe();
-    })
-})
-
+subject$.value = value$;
 
 //trigger
 const sub =  subject$.value.subscribe((res)=>{
     // console.log("res",res);
     //camera triggger 
-    if(res?.type === "camera"){
+    const str = `${res}`;
+    const obj = parseJsonStringToObject(str);
+
+
+    if(obj?.type === "camera"){
         //todo
         console.log("object", res?.type);
         takePicture();
     }
     //camera callback
-    if(res?.type === "cameraCb"){
+    if(obj?.type === "cameraCb"){
         //往回传
-        htmlref.value.contentWindow?.postMessage(res,"*");
+        // htmlref.value.contentWindow?.postMessage(JSON.stringify(res),"*");
+        postMessage(res);
+    }
+    if(obj?.type === "back"){
+        appBack();
     }
 
     //todo...
@@ -54,6 +62,16 @@ const sub =  subject$.value.subscribe((res)=>{
 
 
 });
+
+//如果离开当前页面，销毁订单
+onUnmounted(()=>{
+    
+    removeMessage();
+    sub.unsubscribe();
+
+})
+
+
 
 
 subs.value.push(sub);
@@ -84,17 +102,25 @@ onMounted(()=>{
 
 //完成load之后的提醒
 const haveLoad = ()=>{
+    /** 
     if(window){
         window.addEventListener('message', function (messageEvent) {
-            if (event.origin === 'http://42.194.146.195:8888'){
-                var data = messageEvent.data;
-                subject$.value.next(data);
-            }else{
-                //todo
-                console.log("origin is error");
-            }
+            var data = messageEvent.data;
+            subject$.value.next(data);
+
         }, false);
+
+        htmlref.value?.contentWindow?.postMessage(JSON.stringify({
+            type :"ionic",
+            value:{}
+        }),"*");
+
     }
+    */
+   onMessage();
+   initPlatformWithParams();
+
+
 }
 </script>
 
