@@ -24,7 +24,7 @@ const subs = ref([]);
 const htmlref = ref();
 const router = useRouter();
 const useMessage = ionicMessageHandle(htmlref.value,router);
-const {appBack,onMessage,removeMessage,initPlatformWithParams,value$} = useMessage();
+const {appBack,onMessage, postMessage ,removeMessage,initPlatformWithParams,value$} = useMessage();
 
 subject$.value = value$;
 
