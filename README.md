@@ -58,12 +58,21 @@ ionic cap open ios  //启动ios程序
 ionic cap open android
 ```
 
-# update
 
+# run
 
 
 ```
-ionic cap sync //将build 之后的包同步
+正常调试
+yarn serve //浏览器启动
+
+如果想看app效果，需要手动
+ionic cap sync //将h5资源打包上传ios/android
+
+然后：
+ionic cap open ios  //启动ios原生
+或者
+ionic cap open android //启动android原生
 ```
   
 # custom plugin
