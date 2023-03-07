@@ -82,8 +82,8 @@ ionic cap open android //启动android原生
 
 # bridge
 [jsbridge](https://juejin.cn/post/6844903885555892232)    
-[jsbridge-example](https://github.com/canwhite/jsbridge-example)
-
+[jsbridge-example](https://github.com/canwhite/jsbridge-example)    
+[jsc-jsi-example](https://github.com/canwhite/jsc-jsi-example)    
 
 
 # electron
