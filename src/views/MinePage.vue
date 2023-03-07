@@ -2,7 +2,7 @@
  * @Author: liyafei liyafei@csii.com.cn
  * @Date: 2023-02-24 15:42:56
  * @LastEditors: liyafei liyafei@csii.com.cn
- * @LastEditTime: 2023-03-07 18:37:14
+ * @LastEditTime: 2023-03-07 18:53:23
  * @FilePath: /qc-hybrid-app/src/views/SearchPage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -36,7 +36,10 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const gotoOut = () => {
+  //$ionicHistory.goBack();
+  //$ionicViewSwitcher.nextDirection("back");
   console.log('退出')
-  router.push({ path: "/" })
+  const backLength = window.history.length - 1
+  router.go(-backLength)
 }
 </script>
