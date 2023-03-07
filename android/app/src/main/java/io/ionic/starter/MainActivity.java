@@ -23,6 +23,26 @@ public class MainActivity extends BridgeActivity {
 
         //先挂载好webview
         webview = (WebView) findViewById(R.id.web_view);
+        //设置属性
+        webview.getSettings().setJavaScriptEnabled(true);
+        //设置允许弹框
+        webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+        //当从一个网页跳转到另一个网页时，
+        //我们希望目标网页仍然在当前webview显示
+//        webview.setWebViewClient(new WebViewClient());
+        webview.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // Handle URL schemes here
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
+
+        webview.loadUrl("file:///android_asset/index.html");
+        //webview.loadUrl("https://blog.csdn.net/nuanpang/article/details/125568722");
+
+
+
 
 
     }
