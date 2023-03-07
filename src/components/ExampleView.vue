@@ -2,7 +2,7 @@
  * @Author: liyafei liyafei@csii.com.cn
  * @Date: 2023-02-24 15:25:05
  * @LastEditors: liyafei liyafei@csii.com.cn
- * @LastEditTime: 2023-02-24 16:49:15
+ * @LastEditTime: 2023-03-07 18:32:56
  * @FilePath: /qc-hybrid-app/src/components/Example.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -27,7 +27,7 @@
           <ion-label>Library</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="search" href="/search">
+        <ion-tab-button tab="search" href="/mine">
           <ion-icon :icon="search" />
           <ion-label>我的</ion-label>
         </ion-tab-button>

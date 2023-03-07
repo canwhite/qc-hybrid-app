@@ -2,7 +2,7 @@
  * @Author: liyafei liyafei@csii.com.cn
  * @Date: 2023-02-23 18:42:45
  * @LastEditors: liyafei liyafei@csii.com.cn
- * @LastEditTime: 2023-02-24 15:53:54
+ * @LastEditTime: 2023-03-07 18:32:27
  * @FilePath: /qc-hybrid-app/src/router/index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -25,38 +25,35 @@ import ExampleView from '../components/ExampleView.vue';
 // ]
 const routes = [
   {
-    path: '/',
-    redirect: '/home',
+    path: '',
+    component: () => import('@/views/logIn/LoginPage.vue'),
+    //redirect: '/home',
   },
   {
     path: '/',
     component: ExampleView,
     children: [
       {
-        path: '',
-        redirect: '/home',
-      },
-      {
         path: 'home',
-        component: () => import('../views/HomePage.vue'),
+        component: () => import('@/views/HomePage.vue'),
       },
       {
         path: 'radio',
-        component: () => import('../views/RadioPage.vue'),
+        component: () => import('@/views/RadioPage.vue'),
       },
       {
         path: 'library',
-        component: () => import('../views/LibraryPage.vue'),
+        component: () => import('@/views/LibraryPage.vue'),
       },
       {
-        path: 'search',
-        component: () => import('../views/SearchPage.vue'),
+        path: 'mine',
+        component: () => import('@/views/MinePage.vue'),
       },
     ],
   },
   {
     path:"/webview",
-    component:()=>import("../views/wvtest/index.vue")
+    component:()=>import("@/views/wvtest/index.vue")
   }
 
 
@@ -64,7 +61,7 @@ const routes = [
 
 const router = createRouter({
   // Use: createWebHistory(process.env.BASE_URL) in your app
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 

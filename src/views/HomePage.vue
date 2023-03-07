@@ -2,29 +2,36 @@
  * @Author: liyafei liyafei@csii.com.cn
  * @Date: 2023-02-26 21:12:42
  * @LastEditors: liyafei liyafei@csii.com.cn
- * @LastEditTime: 2023-02-26 21:14:00
+ * @LastEditTime: 2023-03-07 17:14:12
  * @FilePath: /qc-hybrid-app/src/views/HomePage.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!-- eslint-disable no-unused-vars -->
 <template>
-  <div>
+  <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-title>首页</ion-title>
+        <ion-title>搜索列表</ion-title>
       </ion-toolbar>
+      <ion-searchbar class="search-btn" @Change="changeFn" animated="true" placeholder="请输入您想查询的资讯"></ion-searchbar>
+     
     </ion-header>
-    <!-- <web-view :url ="url"/> -->
-    <div class="flex-box"> </div>
+    <ion-content :fullscreen="true">
       <ion-button style="width: 100%" @click="gotoWv">
         weview  
       </ion-button>
-  </div>
+      <ion-list>
+        <ion-item v-for="(item, index) in filteredItems" :key="index">
+          {{ item }}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-page>
 </template>
 
 <script setup>
-// eslint-disable-next-line no-unused-vars
-import { IonHeader, IonPage, IonTitle, IonToolbar,IonButton} from '@ionic/vue';
+
+import { IonPage, IonHeader, IonContent,IonSearchbar,IonList, IonItem, IonTitle, IonToolbar,IonButton} from '@ionic/vue';
 import {useRouter} from "vue-router";
 const router = useRouter();
 // import { ref} from 'vue';
@@ -35,7 +42,11 @@ const gotoWv = ()=>{
 
 
 }
+const filteredItems = ['苹果', '香蕉', '梨']
 
+const changeFn =(a)=>{
+  console.log('搜索框值改变',a.target.value);
+}
 
 
 </script>
@@ -49,6 +60,15 @@ const gotoWv = ()=>{
   top: 50%;
   transform: translateY(-50%);
 }
+ion-searchbar.search-btn {
+    --background: #19422d;
+    --color: #fff;
+    --placeholder-color: #fff;
+    --icon-color: #fff;
+    --clear-button-color: #fff;
+
+    --border-radius: 40px;
+  }
 .flex-box {
   display: flex;
   justify-content: center;
